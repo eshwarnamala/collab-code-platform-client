@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
 
   // Logout
   const logout = async () => {
-    await fetch("/auth/logout", { credentials: "include" });
+    await fetch("https://collab-code-platform-server.onrender.com/auth/logout", { credentials: "include" });
     setUser(null);
     localStorage.removeItem("user"); 
     navigate("/");
