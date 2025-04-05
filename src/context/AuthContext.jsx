@@ -17,7 +17,8 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await fetch("http://localhost:5000/auth/current-user", { credentials: "include" });
+        // const response = await fetch("http://localhost:5000/auth/current-user", { credentials: "include" });
+        const response = await fetch("https://collab-code-platform-server.onrender.com/auth/current-user", { credentials: "include" });
         const data = await response.json();
         if (data.user) {
           setUser(data.user);
@@ -38,7 +39,7 @@ export const AuthProvider = ({ children }) => {
 
   // Login redirect
   const login = () => {
-    window.location.href = "http://localhost:5000/auth/github";
+    window.location.href = "https://collab-code-platform-server.onrender.com/auth/github";
   };
 
   // Logout
