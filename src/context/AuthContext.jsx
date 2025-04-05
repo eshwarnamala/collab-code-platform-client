@@ -5,6 +5,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
+    // Load user from localStorage if available
     const storedUser = localStorage.getItem("user");
     return storedUser ? JSON.parse(storedUser) : null;
   });
@@ -12,52 +13,39 @@ export const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
+  // Check if user is logged in on initial load
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await fetch("/auth/auth/current-user", {
-          credentials: "include",
-        });
-        if (
-          response.ok &&
-          response.headers.get("content-type")?.includes("application/json")
-        ) {
-          const data = await response.json();
-          if (data.user) {
-            setUser(data.user);
-            localStorage.setItem("user", JSON.stringify(data.user));
-          } else {
-            setUser(null);
-            localStorage.removeItem("user");
-          }
-        }
-        else {
-          console.error("Non-JSON response from auth check");
-          const errorText = await response.text();
-          console.log(errorText);
+        const response = await fetch("http://localhost:5000/auth/current-user", { credentials: "include" });
+        const data = await response.json();
+        if (data.user) {
+          setUser(data.user);
+          localStorage.setItem("user", JSON.stringify(data.user)); 
+        } else {
           setUser(null);
-          localStorage.removeItem("user");
+          localStorage.removeItem("user"); 
         }
       } catch (err) {
         console.error("Auth check failed:", err);
         setUser(null);
         localStorage.removeItem("user");
       }
-      setIsLoading(false);
+      setIsLoading(false); 
     };
     checkAuth();
   }, []);
 
+  // Login redirect
   const login = () => {
-    window.location.href =
-      // "https://collab-code-platform-server.onrender.com/auth/github";
-      "http://localhost:5000/auth/github";
+    window.location.href = "http://localhost:5000/auth/github";
   };
 
+  // Logout
   const logout = async () => {
-    await fetch("/auth/auth/logout", { credentials: "include" });
+    await fetch("/auth/logout", { credentials: "include" });
     setUser(null);
-    localStorage.removeItem("user");
+    localStorage.removeItem("user"); 
     navigate("/");
   };
 
