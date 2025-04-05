@@ -50,7 +50,8 @@ export const AuthProvider = ({ children }) => {
 
   const login = () => {
     window.location.href =
-      "https://collab-code-platform-server.onrender.com/auth/github";
+      // "https://collab-code-platform-server.onrender.com/auth/github";
+      "http://localhost:5000/auth/github";
   };
 
   const logout = async () => {
