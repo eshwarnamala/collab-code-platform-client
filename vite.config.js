@@ -22,11 +22,11 @@ export default defineConfig({
         changeOrigin: true,
         secure: true,
       },
-      '/auth': { // Proxy OAuth routes
-        target: 'https://collab-code-platform-server.onrender.com/auth',
-        changeOrigin: true,
-        secure: true,
-      },
+      // '/auth': { // Proxy OAuth routes
+      //   target: 'https://collab-code-platform-server.onrender.com',
+      //   changeOrigin: true,
+      //   secure: true,
+      // },
     },
   },
 });
