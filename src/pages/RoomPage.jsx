@@ -306,7 +306,7 @@ const RoomPage = () => {
         filePath: path,
         fileName: name,
       });
-    }, 300) 
+    }, 2000) 
   ).current;
   
   
