@@ -10,7 +10,7 @@ import { useVoice } from "../context/VoiceContext";
 import "./RoomPage.css";
 
 
-const API = "https://collab-code-platform-server.onrender.com/api/"
+const API = "https://collab-code-platform-server.onrender.com/api"
 // const API = "http:localhost:5000/api/"
 
 
