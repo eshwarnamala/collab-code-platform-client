@@ -8,8 +8,7 @@ import { getUserColor } from "../utils/colors";
 import throttle from "lodash.throttle";
 import { useVoice } from "../context/VoiceContext";
 import "./RoomPage.css";
-import isEqual from "lodash.isequal"; 
-import debounce from "lodash.debounce";
+
 
 const API = "https://collab-code-platform-server.onrender.com/api/"
 // const API = "http:localhost:5000/api/"
