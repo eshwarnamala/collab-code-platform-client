@@ -116,7 +116,7 @@ const RoomPage = () => {
             delete updated[userId];
             return updated;
           });
-        }, 2000);
+        }, 0);
         setRemoteCursors((prev) => ({
           ...prev,
           [userId]: { ...cursor, username, color: getUserColor(userId) },
@@ -294,7 +294,7 @@ const RoomPage = () => {
       } catch (err) {
         console.error("Error saving file:", err);
       }
-    }, 1000)
+    }, 3000)
   ).current;
 
 
