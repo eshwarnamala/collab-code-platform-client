@@ -7,7 +7,6 @@ import socket from "../utils/socket";
 import { getUserColor } from "../utils/colors";
 import throttle from "lodash.throttle";
 import { useVoice } from "../context/VoiceContext";
-import VideoChat from "../components/VideoChat";
 import { useVideo } from "../context/VideoContext";
 
 import "./RoomPage.css";
